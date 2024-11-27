@@ -2,20 +2,25 @@
 title: 'Introduction to R^[`r library(r2symbols) ; format(paste(symbol("copyright") , " - Wim R.M. Cardoen, 2022 - The content can neither be copied nor distributed without the **explicit** permission of the author."))`]'
 subtitle: 'Part 1: Overview of R'
 author: 'Wim R.M. Cardoen'
+fontsize: 11pt
 date: "Last updated: `r format(Sys.time(), ' %2m/%2d/%Y @ %2H:%2M:%2S')`"
 output:
-  pdf_document:
+  pdf_document: 
+    latex_engine: xelatex
     highlight: tango
     df_print: tibble
-    toc: true
+    toc: True
     toc_depth: 5
     number_sections: True
     extra_dependencies:
-    - amsfonts
-    - amsmath
-    - xcolor
-    - hyperref
-urlcolor: violet
+      - amsfonts
+      - amsmath
+      - xcolor
+      - hyperref
+    fig_caption: True
+citecolor: green 
+linkcolor: red
+urlcolor: magenta
 ---
 
 \newpage
@@ -34,8 +39,6 @@ urlcolor: violet
 * Job "security" (due to its popularity) 
   - [IEEE Top Programming Languages 2024](https://spectrum.ieee.org/top-programming-languages-2024)
   - [IEEE Top Programming Languages 2023](https://spectrum.ieee.org/the-top-programming-languages-2023)
-  - [IEEE Top Programming Languages 2022](https://spectrum.ieee.org/top-programming-languages-2022)
-  - [IEEE Top Programming Languages 2021](https://spectrum.ieee.org/top-programming-languages-2021)
   
 # From S to R
 
@@ -45,7 +48,8 @@ $\texttt{People are trapped in history and history is trapped in them. (James Ba
   * Richard A. Becker
   * *[John M. Chambers](https://statweb.stanford.edu/~jmc4/) *
   * Allan R. Wilks
-* 1988: ["New S" (aka "Blue Book" by Becker, Chambers & Wilks)](https://www.amazon.com/New-S-Language-R-Becker/dp/0534091938)  introduced a lot of new features:
+* 1988: ["New S" (aka "Blue Book" by Becker, Chambers & Wilks)](https://www.amazon.com/New-S-Language-R-Becker/dp/0534091938) introduced 
+  a lot of new features:
   * functions (instead of macros)
   * double precision arithmetic
   * interface to Fortan, C[^1]
@@ -126,7 +130,7 @@ help(mean)
 * R commands are separated by:
   * either $\textcolor{blue}{\textbf{;}}$ (semi colon).
   * or newline.
-* R commands can be grouped together using $\textcolor{blue}{\textbf{\{\}}}$ (curly braces).   
+* R commands can be grouped together using $\textcolor{blue}{\textbf{\{\}}}$ (curly braces).
 * R comments: start with $\textcolor{blue}{\textbf{\#}}$ (pound sign) (limited to the same line)
 * History: use **arrow up** & **arrow down** to retrieve previous cmds.
   * <font color="blue"><b>.Rhistory</b></font>: contains the recently used R commands
@@ -146,6 +150,18 @@ $\newline$
 print(R.version.string)
 Sys.time()
 getwd()
+list.files()
+```
+
+$\textcolor{orange}{\textbf{Note:}}$\newline
+You can invoke operating systems (OS) commands **directly** \newline
+using the $\textcolor{blue}{\textbf{system}}$ function to obtain 
+the information above, i.e.:
+```{R, eval=FALSE}
+system("R --version | head -n 1 | cut -d' ' -f1-4")
+system("date +'%Y-%m-%d %T %Z'")
+system("pwd")
+system("ls")
 ```
 
 ## Creation of variables
@@ -216,8 +232,9 @@ sum(y4)
 ## Install the $\texttt{lobstr}$ package within R
 
 ```{R,eval=FALSE}
-install.packages(pkgs=c("lobstr"), repos=c("http://cran.us.r-project.org"), verbose= TRUE)
-packageVersion("lobstr")                        # Check version of the package installed
+install.packages(pkgs=c("lobstr"), 
+                 repos=c("http://cran.us.r-project.org"), verbose= TRUE)
+packageVersion("lobstr")  # Check version of the package installed
 ```
 Info on the $\texttt{lobstr}$ package can be found at:
 

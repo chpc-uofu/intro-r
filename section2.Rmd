@@ -2,9 +2,11 @@
 title: 'Introduction to R^[`r library(r2symbols) ; format(paste(symbol("copyright") , " - Wim R.M. Cardoen, 2022 - The content can neither be copied nor distributed without the **explicit** permission of the author."))`]'
 subtitle: 'Part 2: Atomic Data Types - Atomic/homogeneous vectors'
 author: "Wim R.M. Cardoen"
+fontsize: 11pt
 date: "Last updated: `r format(Sys.time(), ' %2m/%2d/%Y @ %2H:%2M:%2S')`"
 output:
   pdf_document:
+    latex_engine: xelatex
     highlight: tango
     df_print: tibble
     toc: true
@@ -15,9 +17,12 @@ output:
     - amsmath
     - xcolor
     - hyperref
+    fig_caption: True
 bibliography: [latex/intro.bib]  
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/research-institute-for-nature-and-forest.csl
-urlcolor: violet
+citecolor: green
+linkcolor: red
+urlcolor: magenta
 ---
 
 
@@ -91,7 +96,7 @@ $\href{https://cran.r-project.org/doc/manuals/r-release/R-ints.pdf}{R\,Internals
 
 * functions are objects (as stated previously)
   ```{R, echo=TRUE, comment=''}
-  mysamplevar <- function(x, av=0){
+  myvar <- function(x, av=0){
   
     n <- length(x)
     if(n>1){
@@ -100,14 +105,14 @@ $\href{https://cran.r-project.org/doc/manuals/r-release/R-ints.pdf}{R\,Internals
       stop("ERROR:: Dividing by zero (n==1) || (n==0) ")
     }  
   }
-  cat(sprintf("typeof(mysamplevar):%s\n", typeof(mysamplevar)))
+  cat(sprintf("typeof(myvar):%s\n", typeof(myvar)))
   ```
   $\newline$
 
   ```{R, echo=TRUE, comment=''}
   x <- rnorm(100)
-  mysamplevar(x)
-  mysamplevar(x,mean(x))
+  myvar(x)
+  myvar(x,mean(x))
   var(x)
   ```
 
@@ -295,9 +300,14 @@ sqrt(s3)
 
 ## Exercises
 
-* - Calculate $\log_2(10)$ using $\texttt{R}$'s $\textcolor{blue}{\textbf{log()}}$ function
-  - Perform the inverse operation and check that you get $10$ back
-  
+* - Calculate $\log_2(10)$ using $\texttt{R}$'s $\textcolor{blue}{\textbf{log()}}$ function.\newline
+    The **default** version of $\textcolor{blue}{\textbf{log()}}$ is $\log_e():=\ln()$.\newline
+    Use $\textcolor{blue}{\textbf{help(log)}}$ to find the appropriate arguments for the $\textcolor{blue}{\textbf{log()}}$ function.
+  - Perform the inverse operation (i.e. to obtain $10$).  
+* - $\texttt{R}$'s $\textcolor{blue}{\textbf{round()}}$ function rounds (by default) a real number to $0$ decimal places. Round the number $\pi$ to 4 decimal places.
+  - $\textcolor{orange}{\textbf{Note:}}$
+    + You can generate the value for $\pi$ as: $4.0*\textcolor{blue}{\textbf{atan}(1.0)}$.
+    + Use $\textcolor{blue}{\textbf{help(round)}}$ to find the appropriate arguments for the $\textcolor{blue}{\textbf{round()}}$ function.
 * Let $z\:= 3\,+\,4i$
   - Use $\texttt{R}$'s $\textcolor{blue}{\textbf{Re()}}$, $\textcolor{blue}{\textbf{Im()}}$ functions to extract the real and imaginary parts of z.
   - Calculate the modulus of $z$ using $\texttt{R}$'s $\textcolor{blue}{\textbf{Mod()}}$ function and check$\newline$ whether you the same answer 
@@ -305,7 +315,6 @@ sqrt(s3)
   - Calculate the argument of $z$ using $\texttt{R}$'s $\textcolor{blue}{\textbf{Arg()}}$ function and check$\newline$ 
     whether you have the same answer using $\arctan{\Big(\frac{\Im(z)}{\Re(z)}\Big)}$.
 
- 
 \newpage
 
 # Atomic vectors
@@ -324,7 +333,7 @@ known as a $\textbf{recursive/generic}$ vector ($\textit{vide infra}$).
 Atomic vectors can be created in a multiple ways:
 
 * Use of the $\textcolor{blue}{\textbf{vector()}}$ function.
-* Use of the $\textcolor{blue}{\textbf{c()}}$ function (**c** stands for concatenate).
+* Use of the $\textcolor{blue}{\textbf{c()}}$ function (**c** stands for *combine*).
 * Use of the column operator $\textcolor{blue}{\textbf{:}}$
 * Use of the $\textcolor{blue}{\textbf{seq()}}$ and $\textcolor{blue}{\textbf{rep()}}$ functions.
 
@@ -613,7 +622,8 @@ It is an abstract data which maps data to keys.
 
 * Creation of 2 independent vectors
 ```{R, echo=TRUE, comment=''}
-capitals <- c("Albany", "Providence", "Hartford", "Boston", "Montpelier", "Concord", "Augusta")
+capitals <- c("Albany", "Providence", "Hartford", "Boston", "Montpelier", 
+              "Concord", "Augusta")
 states <- c("NY", "RI", "CT", "MA", "VT", "NH", "ME")
 capitals
 states

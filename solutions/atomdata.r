@@ -7,6 +7,10 @@ x
 2**x
 
 # Exercise 2:
+pi <- 4.0*atan(1.0)
+round(pi,digits=4)
+
+# Exercise 3:
 z <- 3+4i
 z
 x <- Re(z)
