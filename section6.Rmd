@@ -226,6 +226,19 @@ where $\Gamma(x)$ stands for the gamma function which has the following mathemat
 \item Generate vectors with $10^4$, $10^5$, $10^6$, $10^7$ random numbers from the $\chi^2(\nu=5)$ distribution.$\newline$
       Calculate the mean, as well as the variance for each of those vectors. ($\textcolor{blue}{\textbf{mean()}}$, $\textcolor{blue}{\textbf{var()}}$) $\newline$
       Note: If $X \sim \chi^2(\nu)$ $\Rightarrow$ $\mathbb{E}[X]=\nu$ and $\mathbb{V}[X]=2\nu$
+      
+\item Let $X$, $Y$ be independent random variables $\sim Unif(0,1)$.$\newline$
+      Then $Z=X+Y$ has the following pdf: \href{run:./latex/notes.pdf}{(If you are interested in the details, click here)} 
+      \begin{eqnarray}
+        f_Z(z) = \begin{cases}
+                    z &,\; 0 \le z \le 1 \\
+                    2 - z &,\; 1 \le z \le 2 \nonumber
+                 \end{cases}
+      \end{eqnarray}
+      Generate the vectors x and y each having $10^5$ random numbers $\sim Unif(0,1)$.$\newline$
+      Use the $\textcolor{blue}{\textbf{hist()}}$ function to plot the $z=x+y$ vector.
+      
+      
 \item A brewer from the far-away lands of Hatu wants to follow the land's alcohol ordinance (i.e. a maximum of $5\%$ ethanol per volume). In order to comply with the law he sent a batch of independent samples to a certified lab. The lab results are to be found in the file \texttt{data/beer.csv}.
 
 His plan is to perform a simple one-sided hypothesis test:
