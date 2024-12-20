@@ -1,0 +1,20 @@
+import matplotlib.pyplot as plt
+
+# Case II: z >=1.0
+fig, ax = plt.subplots()
+plt.fill((0.0,0.0,0.40,1.0,1.0,0.0),(0.,1.0,1.0,0.4,0.0,0.0),color="b")
+plt.fill((0.4,1.0,1.0,0.4),(1.0,1.0,0.4,1.0), color="g")
+plt.plot((0.0,1.4),(1.4,0.0),color="r")
+plt.plot((0.0,0.0,1.0,1.0,0  ),(0.,1.,1.,0,0.),color="orange")
+plt.xlim(0.0,1.45)
+plt.ylim(0.0,1.45)
+plt.xticks([0.0,1.0])
+plt.yticks([0.0,1.0])
+plt.xlabel(r"$X$")
+plt.ylabel(r"$Y$")
+plt.text(0.4, 1.05, r"$Y=z-X$")
+ax.spines[['right', 'top']].set_visible(False)
+plt.text(1.375, -0.05, r"$z$")
+plt.text(-0.05,1.4,r"$z$")
+#plt.show()
+plt.savefig('case2.pdf',dpi=600)

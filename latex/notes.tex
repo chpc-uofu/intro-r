@@ -10,6 +10,7 @@
 \usepackage{hyperref}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{listings}
+\usepackage{float}
 \usepackage{graphicx}
 \usepackage{enumitem} 
 %\usepackage{mathpazo}  Palatino-fonts
@@ -109,17 +110,31 @@ the calculation of the following integral:
 \end{eqnarray} 
 Due to the fact that the joint density function $f_{X,Y}(x,y)$ is $1$ within the area $0\le x \le 1\; , \;0\le y \le 1$ the 
 aforementioned integral is identical to the area of the triangle with the following vertices:
-$(0,0)$ and $(0,z)$ and $(z,0)$. 
+$(0,0)$ and $(0,z)$ and $(z,0)$ (see Fig.\,\ref{case1})
+
+\begin{figure}[H]
+   \centering
+	\includegraphics[width=0.95\textwidth]{../img/case1.pdf}
+	\caption{$F_Z(Z \le z)$ is the area in blue ($0 \le z \le 1$)}\label{case1}
+\end{figure}
 
 \subsection*{Case $2$}
 The cdf $F_Z(Z\le z)$, where $1\le z \le 2$ requires 
-the calculation of the following integral:
+the calculation of the following integral (area in blue Fig.\,\ref{case2}). From Fig.\,\ref{case2}, it is quite obvious 
+that the integral can be calculated a lot easier through its complement in probabilty (area in green):
 \begin{eqnarray}
 	\displaystyle F_Z(Z \le z) &= & 1 - \int_{x=z-1}^{x=1} \int_{y=z-x}^{y=1} f_{X,Y}(x,y)\,dx\,dy \nonumber \\
 	      & =& 1-\frac{(2-z)^2}{2} \nonumber
 \end{eqnarray} 
-Using the same argument as in Case $1$, the aforementioned integral is identical to the area of a triangle. The triangle's vertices are
-$(z-1,1)$ and $(1,z-1)$ and $(1,1)$. Its area is therefore $\displaystyle \frac{(2-z)^2}{2}$. The cdf $F_Z(Z\le z)$ is the complementary area.
+
+
+
+\begin{figure}[H]
+   \centering
+        \includegraphics[width=0.95\textwidth]{../img/case2.pdf}
+        \caption{$F_Z(Z \le z)$ is the area in blue ($1 \le z \le 2$)}\label{case2}
+\end{figure}
+
 
 \subsection*{Calculation of the pdf}
 Above, we obtained the cdf $F_Z(z)$: 
