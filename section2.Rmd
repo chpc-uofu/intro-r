@@ -306,7 +306,7 @@ sqrt(s3)
   - Perform the inverse operation (i.e. to obtain $10$).  
 * - $\texttt{R}$'s $\textcolor{blue}{\textbf{round()}}$ function rounds (by default) a real number to $0$ decimal places. Round the number $\pi$ to 4 decimal places.
   - $\textcolor{orange}{\textbf{Note:}}$
-    + You can generate the value for $\pi$ as: $4.0*\textcolor{blue}{\textbf{atan}(1.0)}$.
+    + You can generate the value for $\pi$ as: $4.0*\textcolor{blue}{\textbf{atan}(1.0)}$ or just by invoking $pi$.
     + Use $\textcolor{blue}{\textbf{help(round)}}$ to find the appropriate arguments for the $\textcolor{blue}{\textbf{round()}}$ function.
 * Let $z\:= 3\,+\,4i$
   - Use $\texttt{R}$'s $\textcolor{blue}{\textbf{Re()}}$, $\textcolor{blue}{\textbf{Im()}}$ functions to extract the real and imaginary parts of z.
@@ -727,7 +727,7 @@ mean(x, na.rm=TRUE)
   dailyusage[sample(1:365, sample(1:50,1), replace=FALSE)] <- NA
   ```
      - How many measurements failed?
-     - What is the average daily energy consumption (based on the non-failed) measurements?
+     - What is the maximum daily energy consumption, considering only the non-failed measurements? 
 
 
 ## NaN and infinities

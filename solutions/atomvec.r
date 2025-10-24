@@ -57,7 +57,7 @@ print(4.0*ratio)
 dailyusage <- 30.0 + runif(365, min=0, max=5.0)
 dailyusage[sample(1:365, sample(1:50,1), replace=FALSE)] <- NA
 sum(is.na(dailyusage))
-mean(dailyusage, na.rm=TRUE) * 365
+max(dailyusage, na.rm=TRUE) 
 
 
 
