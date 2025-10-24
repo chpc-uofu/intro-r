@@ -37,6 +37,7 @@ urlcolor: magenta
 * A lot of pre-canned [packages/libraries](https://cran.r-project.org/web/packages/)
 * Large community (and very active development)
 * Job "security" (due to its popularity) 
+  - [IEEE Top Programming Languages 2025](https://spectrum.ieee.org/top-programming-languages-2025)
   - [IEEE Top Programming Languages 2024](https://spectrum.ieee.org/top-programming-languages-2024)
   - [IEEE Top Programming Languages 2023](https://spectrum.ieee.org/the-top-programming-languages-2023)
   
