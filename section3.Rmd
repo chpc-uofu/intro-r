@@ -5,6 +5,7 @@ author: "Wim R.M. Cardoen"
 date: "Last updated: `r format(Sys.time(), ' %2m/%2d/%Y @ %2H:%2M:%2S')`"
 output:
   pdf_document:
+    latex_engine: lualatex
     highlight: tango
     df_print: tibble
     toc: true

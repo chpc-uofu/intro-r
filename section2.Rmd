@@ -6,7 +6,7 @@ fontsize: 11pt
 date: "Last updated: `r format(Sys.time(), ' %2m/%2d/%Y @ %2H:%2M:%2S')`"
 output:
   pdf_document:
-    latex_engine: xelatex
+    latex_engine: lualatex
     highlight: tango
     df_print: tibble
     toc: true
@@ -110,8 +110,7 @@ $\href{https://cran.r-project.org/doc/manuals/r-release/R-ints.pdf}{R\,Internals
   $\newline$
 
   ```{R, echo=TRUE, comment=''}
-  x <- rnorm(100)
-  myvar(x)
+  x = rnorm(100)
   myvar(x,mean(x))
   var(x)
   ```
@@ -177,7 +176,7 @@ typeof(x1)
 
 $\newline$
 
-* integer values ($\in \, \mathbb{Z}$): 
+* integer values (i.e. whole numbers): 
 
 ```{R, echo=TRUE, comment=''}
 x2 <- 3L

@@ -6,7 +6,7 @@ fontsize: 11pt
 date: "Last updated: `r format(Sys.time(), ' %2m/%2d/%Y @ %2H:%2M:%2S')`"
 output:
   pdf_document: 
-    latex_engine: xelatex
+    latex_engine: lualatex
     highlight: tango
     df_print: tibble
     toc: True
@@ -264,7 +264,7 @@ cat(sprintf("Size of the object (Bytes):%s\n", obj_size(x)))
 ## Removing objects from your environment
 ```{R,eval=FALSE}
 ls()
-rm(c("y1","y2","y3","y4"))
+rm("y1","y2","y3","y4")
 ls()
 ```
 
