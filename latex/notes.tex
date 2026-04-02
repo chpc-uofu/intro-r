@@ -1,49 +1,66 @@
+% !TeX program = lualatex
+\DocumentMetadata{
+  lang        = en-US,
+  pdfstandard = ua-2,
+  tagging     = on,
+  tagging-setup = { math/setup = {mathml-SE}}
+}
 \documentclass[12pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel} % Language to be used
-\usepackage[T1]{fontenc}
+% inputenc and fontenc are not needed with LuaLaTeX (it is natively UTF-8)
+\usepackage[english]{babel}
+% unicode-math must be loaded BEFORE any other math/font package under LuaLaTeX.
+% It supersedes amssymb and amsfonts entirely (both define \eth, causing a clash).
+% txfonts is also incompatible with unicode-math; omit it here.
+\usepackage{unicode-math}
+\usepackage{tagpdf}
 \usepackage{amsmath}
-\usepackage{amssymb}
+% amssymb and amsfonts are intentionally omitted: unicode-math provides all their
+% symbols without the \eth redefinition conflict.
 \usepackage{amsthm}
-\usepackage{cite}  % Package to cite multiple references at once
+\usepackage{cite}
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{listings}
 \usepackage{float}
 \usepackage{graphicx}
-\usepackage{enumitem} 
-%\usepackage{mathpazo}  Palatino-fonts
-%\usepackage{txfonts}
+\usepackage{enumitem}
+% txfonts is intentionally omitted: it conflicts with unicode-math under LuaLaTeX.
+% Use \setmathfont / \setmainfont below to choose fonts instead.
 \usepackage[stable]{footmisc}
 
-\urlstyle{same} 
+% ADA/PDF-UA: set PDF metadata for screen readers
+\hypersetup{%
+  colorlinks  = true,
+  linkcolor   = blue,         % changed from green for WCAG contrast compliance
+  urlcolor    = blue,
+  citecolor   = blue,
+  pdfborderstyle = {/S/U/W 1},
+  pdftitle    = {Notes to Hands-on Intro to R},
+  pdfauthor   = {Wim R. M. Cardoen},
+  pdfsubject  = {Notes for the Hands-on Intro to R programming language},
+  pdflang     = {en-US}
+}
 
+\urlstyle{same}
 
 \lstset{
-  basicstyle=\ttfamily,
-  language=python,
-  tabsize=4,
-  frame=single,
-  showstringspaces=false,
-  showspaces=false,
-  showtabs=false,
-  captionpos=b,
-  breaklines=true,
-  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
-  keywordstyle=\color{RoyalBlue},      % keyword style
-  commentstyle=\color{ForestGreen},   % comment style
-  stringstyle=\color{BrickRed}
+  basicstyle        = \ttfamily,
+  language          = python,
+  tabsize           = 4,
+  frame             = single,
+  showstringspaces  = false,
+  showspaces        = false,
+  showtabs          = false,
+  captionpos        = b,
+  breaklines        = true,
+  breakatwhitespace = false,
+  keywordstyle      = \color{RoyalBlue},
+  commentstyle      = \color{ForestGreen},
+  stringstyle       = \color{BrickRed}
 }
 
-\hypersetup{%
-  colorlinks=true,    % hyperlinks will be black
-  linkcolor=green,% hyperlink text will be green
-  linkbordercolor=red,% hyperlink borders will be red
-  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
-}
-
-% Parameters to the margins
+% Page margins
 \setlength{\topmargin}{-0.50in}
 \setlength{\oddsidemargin}{-0.25in}
 \setlength{\evensidemargin}{-0.25in}
@@ -51,7 +68,6 @@
 \setlength{\textheight}{9.00in}
 
 % Here is where all the new theorem environments are defined.
-% Their use is described in the text.
 \newtheorem{prop}{Proposition}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
@@ -65,12 +81,12 @@
 \theoremstyle{remark}
 \newtheorem*{rmk}{Remark}
 
-\title{\centering{Notes to Hands-on Intro to R}}
+% ADA/PDF-UA: title must be a plain string (no \centering inside \title)
+\title{Notes to Hands-on Intro to R}
 
 \author{Wim R.\,M.\, Cardoen\\
-	Center for High-Performance Computing (CHPC)\\
-	University of Utah}
-
+        Center for High-Performance Computing (CHPC)\\
+        University of Utah}
 
 \begin{document}
 \date{\today}
@@ -80,7 +96,7 @@
 \pagestyle{plain}
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\renewcommand \thesection{\Roman{section}}
+\renewcommand{\thesection}{\Roman{section}}
 
 \section*{Section 6: $Z=X+Y$}
 Let $X$ and $Y$ be random variables which are independent and have a uniform distribution in $[0,1]$.
@@ -127,14 +143,11 @@ that the integral can be calculated a lot easier through its complement in proba
 	      & =& 1-\frac{(2-z)^2}{2} \nonumber
 \end{eqnarray} 
 
-
-
 \begin{figure}[H]
    \centering
         \includegraphics[width=0.95\textwidth]{../img/case2.pdf}
         \caption{$F_Z(Z \le z)$ is the area in blue ($1 \le z \le 2$)}\label{case2}
 \end{figure}
-
 
 \subsection*{Calculation of the pdf}
 Above, we obtained the cdf $F_Z(z)$: 
@@ -157,7 +170,5 @@ The pdf $f_Z(z)$ thus becomes:
                      0   & \text{else} \nonumber
                  \end{cases}
 \end{eqnarray}
-
-
 
 \end{document}
