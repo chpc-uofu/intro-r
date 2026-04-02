@@ -1,0 +1,94 @@
+% !TeX program = lualatex
+\DocumentMetadata{
+  lang        = en-US,
+  pdfstandard = ua-2,
+  tagging     = on,
+  tagging-setup = { math/setup = {mathml-SE}}
+}
+\documentclass[10pt]{article}
+% inputenc and fontenc are not needed with LuaLaTeX (it is natively UTF-8)
+\usepackage[english]{babel}
+% unicode-math must be loaded BEFORE any other math/font package under LuaLaTeX.
+% It supersedes amssymb and amsfonts entirely (both define \eth, causing a clash).
+% txfonts is also incompatible with unicode-math; omit it here.
+\usepackage{unicode-math}
+\usepackage{tagpdf}
+\usepackage{amsmath}
+% amssymb and amsfonts are intentionally omitted: unicode-math provides all their
+% symbols without the \eth redefinition conflict.
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{enumitem}
+% txfonts is intentionally omitted: it conflicts with unicode-math under LuaLaTeX.
+% Use \setmathfont / \setmainfont below to choose fonts instead.
+\usepackage[stable]{footmisc}
+
+% ADA/PDF-UA: set PDF metadata for screen readers
+\hypersetup{%
+  colorlinks  = true,
+  linkcolor   = blue,         % changed from green for WCAG contrast compliance
+  urlcolor    = blue,
+  citecolor   = blue,
+  pdfborderstyle = {/S/U/W 1},
+  pdftitle    = {Hands-on Intro to R},
+  pdfauthor   = {Wim R. M. Cardoen},
+  pdfsubject  = {Introduction to the R programming language},
+  pdflang     = {en-US}
+}
+
+\urlstyle{same}
+
+\lstset{
+  basicstyle        = \ttfamily,
+  language          = python,
+  tabsize           = 4,
+  frame             = single,
+  showstringspaces  = false,
+  showspaces        = false,
+  showtabs          = false,
+  captionpos        = b,
+  breaklines        = true,
+  breakatwhitespace = false,
+  keywordstyle      = \color{RoyalBlue},
+  commentstyle      = \color{ForestGreen},
+  stringstyle       = \color{BrickRed}
+}
+
+% Page margins
+\setlength{\topmargin}{-0.50in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\textwidth}{7.0in}
+\setlength{\textheight}{9.00in}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmk}{Remark}
+
+% ADA/PDF-UA: title must be a plain string (no \centering inside \title)
+\title{Hands-on Intro to R}
+
+\author{Wim R.\,M.\, Cardoen\\
+        Center for High-Performance Computing (CHPC)\\
+        University of Utah}
+
+\begin{document}
+\date{\today}
+\maketitle
+\thispagestyle{empty}
+
+\pagestyle{plain}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\renewcommand{\thesection}{\Roman{section}}
+
+\include{content}
+
+\end{document}
