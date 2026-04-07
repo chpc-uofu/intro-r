@@ -11,13 +11,15 @@ cat(sprintf("### Section 1.1.2: Exercise 1 ###\n"))
 cat(sprintf("Solution A:\n"))
 if(num1<=num2){
    if(num1<=num3){
-      cat(sprintf("%d is the smallest number\n", num1))	 
-  }
+       cat(sprintf("%d is the smallest number\n", num1))	 
+   }else{
+       cat(sprintf("%d is the smallest number\n", num3))
+   }
 }else{
    if(num2<=num3){
-        cat(sprintf("%d is the smallest number\n", num2))
+       cat(sprintf("%d is the smallest number\n", num2))
    }else{
-        cat(sprintf("%d is the smallest number\n", num3))
+       cat(sprintf("%d is the smallest number\n", num3))
    }	    
 }  
 	
